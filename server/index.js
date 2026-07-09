@@ -1,5 +1,4 @@
 require('dotenv').config({ path: __dirname + '/.env' });
-console.log('MONGO URI:', process.env.MONGODB_URI); // add this line
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
