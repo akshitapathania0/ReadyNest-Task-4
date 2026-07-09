@@ -1,0 +1,21 @@
+services:
+  # Full-stack web service (Express serves React build)
+  - type: web
+    name: collabspace
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install --prefix server && npm install --prefix client && npm run build --prefix client
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false   # Set this manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false   # Set to your Render URL, e.g. https://collabspace.onrender.com
