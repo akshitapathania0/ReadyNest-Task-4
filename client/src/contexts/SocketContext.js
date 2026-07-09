@@ -11,7 +11,7 @@ export function SocketProvider({ token, children }) {
   useEffect(() => {
     if (!token) return;
 
-    const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000', {
+    const socket = io('http://localhost:5000', {
       auth: { token },
       transports: ['websocket', 'polling'],
       reconnectionAttempts: 10,
